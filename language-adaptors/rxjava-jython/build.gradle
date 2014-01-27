@@ -1,0 +1,17 @@
+apply plugin: 'osgi'
+
+dependencies {
+    compile project(':rxjava-core')
+    compile 'org.python:jython:2.2'
+    provided 'junit:junit-dep:4.10'
+}
+
+jar {
+    manifest {
+        name = 'rxjava-jython'
+        instruction 'Bundle-Vendor', 'Netflix'
+        instruction 'Bundle-DocURL', 'https://github.com/Netflix/RxJava'
+        instruction 'Import-Package', '!org.junit,!junit.framework,*'
+        instruction 'Fragment-Host', 'com.netflix.rxjava.core'
+    }
+}
